@@ -6,7 +6,7 @@ import Page from "../components/Page";
 const url = 'https://programmer-humor.p.rapidapi.com/api/reddit'
 const response =  await fetch(url, {
     headers: {
-        'X-RapidAPI-Key': '9e89d4ea21msh48f2cd0ac7d903ep132579jsna3c3bc99b2a5',
+        'X-RapidAPI-Key': import.meta.env.X_RapidAPI_Key,
         'X-RapidAPI-Host': 'programmer-humor.p.rapidapi.com'
     }
 })
