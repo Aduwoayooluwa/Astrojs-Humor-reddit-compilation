@@ -22,18 +22,18 @@ console.log(data)
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-	<body>
+	<body class="bg-gray-700 text-white">
         <Navbar />
-		<h1>Astro</h1>
+		<h1 class="text-center font-semibold border p-2 my-2"><a href='/9gag'>9gag</a> | <a href='/reddit'>Reddit</a></h1>
 		{
 			data.map((item, index) => {
 				return (
-					<div class="grid place-items-center w-full">
-						<div>
-							<img src={item.thumbnail} alt="images"/>
-							<p><a href={item.sourceUrl}>{item.title}</a></p>
-							<p>Upvotes: {item.upvotes}</p>
-							<p>{new Date(item.posted).toUTCString()}</p>
+					<div class="grid px-3 place-items-center w-full">
+						<div class="border grid place-items-center w-full md:w-1/2 mb-4 leading-6 shadow-yellow-600 shadow">
+							<img class="w-full" src={item.thumbnail} alt="images"/>
+							<p class="font-semibold text-xl"><a href={item.sourceUrl}>{item.title}</a></p>
+							<small>Upvotes: {item.upvotes}</small>
+							<small>{new Date(item.posted).toUTCString()}</small>
 						</div>
 						
 					</div>

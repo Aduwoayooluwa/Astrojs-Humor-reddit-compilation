@@ -1,0 +1,45 @@
+---
+import Navbar from "../Layout/Navbar";
+import Jokes from "../components/Jokes";
+import Page from "../components/Page";
+
+const url = 'https://programmer-humor.p.rapidapi.com/api/reddit'
+const response =  await fetch(url, {
+    headers: {
+        'X-RapidAPI-Key': '9e89d4ea21msh48f2cd0ac7d903ep132579jsna3c3bc99b2a5',
+        'X-RapidAPI-Host': 'programmer-humor.p.rapidapi.com'
+    }
+})
+
+const data = await response.json()
+console.log(data)
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body class="bg-slate-900 text-white">
+        <Navbar />
+		<h1 class="text-center font-semibold border p-2 my-2"><a href='/9gag'>9gag</a> | <a href='/reddit'>Reddit</a></h1>
+		{
+			data.map((item, index) => {
+				return (
+					<div class="grid px-3 place-items-center w-full">
+						<div class="border grid place-items-center w-full md:w-1/2 mb-4 leading-6 shadow-yellow-600 shadow">
+							<img class="w-full" src={item.thumbnail} alt="images"/>
+							<p class="font-semibold text-xl"><a href={item.sourceUrl}>{item.title}</a></p>
+							<small>Upvotes: {item.upvotes}</small>
+							<small>{new Date(item.posted).toUTCString()}</small>
+						</div>
+						
+					</div>
+				)
+			})
+		}
+		
+	</body>
+</html>
